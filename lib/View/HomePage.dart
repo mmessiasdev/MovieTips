@@ -1,4 +1,5 @@
 import 'package:codigomobile/View/Components/Header.dart';
+import 'package:codigomobile/View/Components/MovieList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -16,7 +17,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         body: ListView(
       children: [
-        Header(),
+        Header(
+          title: 'MovieTips',
+        ),
+        MovieList(title: 'Melhores Avaliados', genero: "top_rated"),
       ],
     ));
   }

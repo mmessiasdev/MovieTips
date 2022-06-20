@@ -8,7 +8,9 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Login.dart';
 
 class Header extends StatelessWidget {
-  const Header({Key? key}) : super(key: key);
+  Header({Key? key, required this.title}) : super(key: key);
+
+  String title;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,7 @@ class Header extends StatelessWidget {
             SizedBox(
               child: Center(
                 child: Text(
-                  'Movietips',
+                  title,
                   style: GoogleFonts.montserrat(
                       fontSize: 40, fontWeight: FontWeight.w600),
                 ),
