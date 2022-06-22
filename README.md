@@ -11,9 +11,9 @@ Aplicação de App e Site de Filmes com Flutter e React.
 
 #### 2 - Fazer autenticação FireBase de usuários. ✅
 
-#### 3 - Criar Inteface Flutter. (APP)
-###### -  Implementar API TMDB
-###### -  Realizar responsividade do App
+#### 3 - Criar Inteface Flutter. (APP) ✅
+###### -  Implementar API TMDB ✅
+###### -  Realizar responsividade do App ✅
 ###### -  Criar Testes
 
 #### 4 - Criar inteface React. (SITE)

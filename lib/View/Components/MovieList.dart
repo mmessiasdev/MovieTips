@@ -27,7 +27,7 @@ class MovieList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.only(top: 25),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -43,7 +43,7 @@ class MovieList extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 280,
+            height: 250,
             child: SizedBox(
               child: FutureBuilder<List>(
                   future: fetch(),

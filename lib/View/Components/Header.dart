@@ -8,9 +8,11 @@ import 'package:google_fonts/google_fonts.dart';
 import '../Login.dart';
 
 class Header extends StatelessWidget {
-  Header({Key? key, required this.title}) : super(key: key);
+  Header({Key? key, required this.title, required this.buttonBack});
 
   String title;
+
+  final Widget buttonBack;
 
   @override
   Widget build(BuildContext context) {
@@ -34,31 +36,19 @@ class Header extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(
-              child: Center(
-                child: Text(
-                  title,
-                  style: GoogleFonts.montserrat(
-                      fontSize: 40, fontWeight: FontWeight.w600),
-                ),
+              width: MediaQuery.of(context).size.width * 0.75,
+              child: RichText(
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                text: TextSpan(
+                    style: GoogleFonts.montserrat(
+                        color: Colors.black,
+                        fontSize: 40,
+                        fontWeight: FontWeight.w600),
+                    text: title),
               ),
             ),
-            SizedBox(
-              child: TextButton(
-                onPressed: () {
-                  sair();
-                },
-                child: Row(
-                  children: [
-                    Center(
-                        child: Icon(
-                      Icons.arrow_back_ios,
-                      size: 12,
-                    )),
-                    Text('Logout')
-                  ],
-                ),
-              ),
-            ),
+            buttonBack,
           ],
         ),
       ),

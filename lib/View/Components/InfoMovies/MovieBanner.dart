@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MovieBanner extends StatelessWidget {
   MovieBanner(
-      {required this.overview,
+      {Key? key,
+      required this.overview,
       required this.year,
       required this.rated,
-      required this.poster});
+      required this.poster,
+      required this.title})
+      : super(key: key);
 
   String poster;
   String overview;
   String rated;
   String year;
+  String title;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class MovieBanner extends StatelessWidget {
                           child: Image.network(poster)),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   SizedBox(
@@ -58,7 +60,7 @@ class MovieBanner extends StatelessWidget {
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              Icon(
+                              const Icon(
                                 Icons.star,
                                 size: 10,
                               )
@@ -67,7 +69,7 @@ class MovieBanner extends StatelessWidget {
                           Text(
                             year,
                             style: GoogleFonts.montserrat(
-                              color: Color.fromARGB(255, 0, 0, 0),
+                              color: const Color.fromARGB(255, 0, 0, 0),
                               fontSize: 10,
                               fontWeight: FontWeight.w800,
                             ),
@@ -95,14 +97,30 @@ class MovieBanner extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        overview,
-                        textAlign: TextAlign.justify,
-                        style: GoogleFonts.montserrat(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w300,
-                        ),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              title,
+                              textAlign: TextAlign.center,
+                              style: GoogleFonts.montserrat(
+                                color: Color.fromARGB(255, 0, 0, 0),
+                                fontSize: 15,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                          Text(
+                            overview,
+                            textAlign: TextAlign.justify,
+                            style: GoogleFonts.montserrat(
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontSize: 12,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

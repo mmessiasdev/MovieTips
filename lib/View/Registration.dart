@@ -130,6 +130,7 @@ class _RegistrationState extends State<Registration> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: TextFormField(
+                      obscureText: true,
                       controller: _passwordController,
                       decoration: InputDecoration(
                         focusedBorder: InputBorder.none,
