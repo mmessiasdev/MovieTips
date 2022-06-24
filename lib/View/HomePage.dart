@@ -1,11 +1,11 @@
-import 'package:codigomobile/View/Components/DefaultButton.dart';
-import 'package:codigomobile/View/Components/Header.dart';
-import 'package:codigomobile/View/Components/MovieList.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import 'Components/DefaultButton.dart';
+import 'Components/Header.dart';
+import 'Components/MovieList.dart';
 import 'Login.dart';
 
 class HomePage extends StatefulWidget {

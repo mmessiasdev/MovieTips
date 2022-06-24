@@ -1,6 +1,6 @@
 {
-    "name": "codigomobile",
-    "short_name": "codigomobile",
+    "name": "movietipsflutter",
+    "short_name": "movietipsflutter",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

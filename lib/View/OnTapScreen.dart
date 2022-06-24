@@ -1,19 +1,18 @@
 import 'dart:convert';
 
-import 'package:codigomobile/View/Components/DefaultButton.dart';
-import 'package:codigomobile/View/Components/InfoMovies/Credits.dart';
-import 'package:codigomobile/View/Components/InfoMovies/MovieGalery.dart';
-import 'package:codigomobile/View/Components/InfoMovies/TraillerEn.dart';
-import 'package:codigomobile/View/Components/InfoMovies/TraillerPt.dart';
-import 'package:codigomobile/View/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
+import 'Components/DefaultButton.dart';
 import 'Components/Header.dart';
+import 'Components/InfoMovies/Credits.dart';
 import 'Components/InfoMovies/MovieBanner.dart';
+import 'Components/InfoMovies/TraillerEn.dart';
+import 'Components/InfoMovies/TraillerPt.dart';
+import 'HomePage.dart';
 
 class OnTapScreen extends StatelessWidget {
   OnTapScreen({

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.codigomobile">
+    package="com.example.movietipsflutter">
    <application
-        android:label="codigomobile"
+        android:label="Movietips"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
