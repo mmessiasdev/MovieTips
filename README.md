@@ -23,4 +23,4 @@ Aplicação de App e Site de Filmes com Flutter e React.
 
 #### 7 - Realizar Testes 
 
-#### 9 - Publicar 
+#### 9 - Publicar

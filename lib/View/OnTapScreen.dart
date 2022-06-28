@@ -42,30 +42,33 @@ class OnTapScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(children: [
-      Header(
-        title: title,
-        buttonBack: DefaultButton(
-            tap: () {
-              Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (context) => HomePage()));
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              size: 30,
-            )),
+      body: ListView(
+        children: [
+          Header(
+            title: title,
+            buttonBack: DefaultButton(
+                tap: () {
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => HomePage()));
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios,
+                  size: 30,
+                )),
+          ),
+          MovieBanner(
+            overview: '${overview}',
+            rated: '${rated}',
+            year: '${year}',
+            poster: '${poster}',
+            title: '${title}',
+          ),
+          Credits(idMovie: '${idMovie}'),
+          TraillerPt(idMovie: '${idMovie}'),
+          // MovieGalery(idMovie: '${idMovie}'),
+          TraillerEn(idMovie: '${idMovie}'),
+        ],
       ),
-      MovieBanner(
-        overview: '${overview}',
-        rated: '${rated}',
-        year: '${year}',
-        poster: '${poster}',
-        title: '${title}',
-      ),
-      TraillerPt(idMovie: '${idMovie}'),
-      Credits(idMovie: '${idMovie}'),
-      // MovieGalery(idMovie: '${idMovie}'),
-      TraillerEn(idMovie: '${idMovie}'),
-    ]));
+    );
   }
 }

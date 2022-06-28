@@ -51,7 +51,6 @@ class MovieGalery extends StatelessWidget {
                       var MovieApi = snapshot.data![index];
                       var url =
                           "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
-
                       if (MovieApi["file_path"] != null) {
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.center,

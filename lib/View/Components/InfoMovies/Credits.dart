@@ -25,44 +25,68 @@ class Credits extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(10),
-          child: SizedBox(
-            child: Text('Casters',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.montserrat(
-                    fontSize: 20, fontWeight: FontWeight.w600)),
+    return Padding(
+      padding: const EdgeInsets.only(top: 50),
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(10),
+            child: SizedBox(
+              child: Text('Casters',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.montserrat(
+                      fontSize: 20, fontWeight: FontWeight.w600)),
+            ),
           ),
-        ),
-        SizedBox(
-          width: double.infinity,
-          height: 75,
-          child: FutureBuilder<List>(
-            future: fetch(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return GridView.builder(
-                    gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 500,
-                      mainAxisSpacing: 0,
-                      mainAxisExtent: 100,
-                    ),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: snapshot.data!.length,
-                    itemBuilder: (context, index) {
-                      var MovieApi = snapshot.data![index];
-                      var url =
-                          "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
+          SizedBox(
+            width: double.infinity,
+            height: 75,
+            child: FutureBuilder<List>(
+              future: fetch(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return GridView.builder(
+                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: 500,
+                        mainAxisSpacing: 0,
+                        mainAxisExtent: 100,
+                      ),
+                      scrollDirection: Axis.horizontal,
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        var MovieApi = snapshot.data![index];
+                        var url =
+                            "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
 
-                      if (MovieApi["profile_path"] != null) {
+                        if (MovieApi["profile_path"] != null) {
+                          return Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircleAvatar(
+                                backgroundImage: CachedNetworkImageProvider(
+                                  '${url}${MovieApi["profile_path"]}',
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 5),
+                                child: SizedBox(
+                                  child: Text('${MovieApi["name"]}',
+                                      textAlign: TextAlign.center,
+                                      style:
+                                          GoogleFonts.montserrat(fontSize: 10)),
+                                ),
+                              )
+                            ],
+                          );
+                        } else if (MovieApi["profile_path"] == null) {}
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircleAvatar(
-                              backgroundImage: CachedNetworkImageProvider(
-                                '${url}${MovieApi["profile_path"]}',
+                              backgroundColor: Colors.red,
+                              child: Icon(
+                                Icons.person,
+                                color: Colors.white,
                               ),
                             ),
                             Padding(
@@ -76,38 +100,18 @@ class Credits extends StatelessWidget {
                             )
                           ],
                         );
-                      } else if (MovieApi["profile_path"] == null) {}
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.red,
-                            child: Icon(
-                              Icons.person,
-                              color: Colors.white,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5),
-                            child: SizedBox(
-                              child: Text('${MovieApi["name"]}',
-                                  textAlign: TextAlign.center,
-                                  style: GoogleFonts.montserrat(fontSize: 10)),
-                            ),
-                          )
-                        ],
-                      );
-                    });
-              } else if (snapshot.hasError) {
-                return Center(
-                  child: Text('Casters Não existem'),
-                );
-              }
-              return Center(child: CircularProgressIndicator());
-            },
-          ),
-        )
-      ],
+                      });
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Casters Não existem'),
+                  );
+                }
+                return Center(child: CircularProgressIndicator());
+              },
+            ),
+          )
+        ],
+      ),
     );
   }
 }

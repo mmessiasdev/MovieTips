@@ -25,17 +25,14 @@ class TraillerEn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 40),
-          child: SizedBox(
-            child: Text('Trailer em Inglês',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.montserrat(
-                    fontSize: 20, fontWeight: FontWeight.w600)),
-          ),
+        SizedBox(
+          child: Text('Em Inglês',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.montserrat(
+                  fontSize: 20, fontWeight: FontWeight.w600)),
         ),
         SizedBox(
-          height: 300,
+          height: 270,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 35),
             child: FutureBuilder<List>(
@@ -70,8 +67,8 @@ class TraillerEn extends StatelessWidget {
                                   child: Container(
                                     height: 180,
                                     decoration: BoxDecoration(
-                                      color: Color.fromARGB(255, 204, 204, 204),
-                                      borderRadius: BorderRadius.circular(15),
+                                      color: Color.fromARGB(255, 197, 197, 197),
+                                      borderRadius: BorderRadius.circular(30),
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.symmetric(
@@ -94,13 +91,18 @@ class TraillerEn extends StatelessWidget {
                                                           const EdgeInsets.only(
                                                               bottom: 20),
                                                       child: Container(
+                                                        width: 85,
                                                         decoration: BoxDecoration(
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        20),
+                                                                        12),
                                                             color:
-                                                                Colors.white),
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    255,
+                                                                    255,
+                                                                    255)),
                                                         child: Icon(
                                                           Icons.play_arrow,
                                                           size: 50,

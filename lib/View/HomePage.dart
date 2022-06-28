@@ -1,3 +1,5 @@
+import 'package:Movietips/View/Components/Carousel.dart';
+import 'package:Movietips/View/Components/Category.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -40,12 +42,17 @@ class _HomePageState extends State<HomePage> {
               icon: Icon(
                 Icons.logout_rounded,
                 size: 30,
-                color: Colors.blue,
+                color: Color.fromARGB(255, 0, 0, 0),
               )),
+        ),
+        CarouselMoviel(
+          movieId: '242',
+          title: 'Filmes de Ação para você',
         ),
         MovieList(title: "Populares", genero: "popular"),
         MovieList(title: "Melhores Avaliados", genero: "top_rated"),
         MovieList(title: "Novos", genero: "upcoming"),
+        Category(title: "Categoría", genero: "upcoming")
       ],
     ));
   }
