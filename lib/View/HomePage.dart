@@ -57,5 +57,3 @@ class _HomePageState extends State<HomePage> {
     ));
   }
 }
-
-class _fireBaseAuth {}

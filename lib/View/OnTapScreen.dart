@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:Movietips/View/Components/InfoMovies/toFind.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -63,6 +64,7 @@ class OnTapScreen extends StatelessWidget {
             poster: '${poster}',
             title: '${title}',
           ),
+          ToFind(idMovie: '${idMovie}'),
           Credits(idMovie: '${idMovie}'),
           TraillerPt(idMovie: '${idMovie}'),
           // MovieGalery(idMovie: '${idMovie}'),

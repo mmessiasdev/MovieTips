@@ -34,7 +34,7 @@ class TraillerEn extends StatelessWidget {
         SizedBox(
           height: 270,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 35),
+            padding: const EdgeInsets.symmetric(vertical: 25),
             child: FutureBuilder<List>(
                 future: fetch(),
                 builder: (context, snapshot) {

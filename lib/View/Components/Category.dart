@@ -23,8 +23,11 @@ class Category extends StatefulWidget {
   State<Category> createState() => _CategoryState();
 }
 
+enum Selected { np, yp }
+
 class _CategoryState extends State<Category> {
   var generes = "10751";
+  var categName = "Catégoria";
 
   Future<List> fetch() async {
     var url = Uri.parse(
@@ -44,6 +47,11 @@ class _CategoryState extends State<Category> {
     return itemCount;
   }
 
+  Color secoundColor = Color.fromARGB(255, 113, 113, 113);
+  Color primaryColor = Color.fromARGB(255, 209, 209, 209);
+
+  Selected? buttonSelected;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -56,7 +64,7 @@ class _CategoryState extends State<Category> {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                widget.title,
+                categName,
                 style: GoogleFonts.montserrat(
                   fontSize: 20,
                   fontWeight: FontWeight.w500,
@@ -69,7 +77,7 @@ class _CategoryState extends State<Category> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  padding: const EdgeInsets.only(top: 20, bottom: 35),
                   child: SizedBox(
                     height: 40,
                     child: ListView.builder(
@@ -79,14 +87,21 @@ class _CategoryState extends State<Category> {
                           var url =
                               "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
                           return GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                generes = "${UserApi["id"]}";
+                                categName = "${UserApi["name"]}";
+                              });
+                            },
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
                               child: Container(
                                 width: 150,
                                 decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 209, 209, 209),
-                                    borderRadius: BorderRadius.circular(50)),
+                                  color: primaryColor,
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
                                 child: Center(
                                   child: Text(
                                     '${UserApi["name"]}',
@@ -97,11 +112,6 @@ class _CategoryState extends State<Category> {
                                 ),
                               ),
                             ),
-                            onTap: () {
-                              setState(() {
-                                generes = "${UserApi["id"]}";
-                              });
-                            },
                           );
                         }),
                   ),
