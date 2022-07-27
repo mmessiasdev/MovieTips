@@ -15,7 +15,7 @@ Aplicação de App e Site de Filmes com Flutter e React.
 ###### -  Implementar API TMDB ✅
 ###### -  Implementar Tela de pesquisa ✅
 ###### -  Realizar responsividade do App ✅
-<img height="400" src="https://i.imgur.com/w04tFbo.jpg"><img height="400" src="https://i.imgur.com/E8phSdF.jpg"><img height="400" src="https://i.imgur.com/us9ZmTT.jpg">
+<img height="400" src="https://i.imgur.com/w04tFbo.jpg"> <img height="400" src="https://i.imgur.com/E8phSdF.jpg"> <img height="400" src="https://i.imgur.com/us9ZmTT.jpg">
 
 #### 4 - Criar inteface React. (SITE)
 ###### -  Implementar API TMDB
