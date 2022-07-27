@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCrnBrc9kCTWtF1kZmH8GpCvjAI4-iVPtI',
-    appId: '1:1034836315663:android:179c680c37c2459e939d7a',
+    appId: '1:1034836315663:android:10b6d4974dc25c15939d7a',
     messagingSenderId: '1034836315663',
     projectId: 'movietipsusers',
     storageBucket: 'movietipsusers.appspot.com',
@@ -63,21 +63,21 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyACICFCOu3XyRHuwBFvVjFFP-EKhmJO_d4',
-    appId: '1:1034836315663:ios:1f4d1c965e5cfe3d939d7a',
+    appId: '1:1034836315663:ios:e176e1f6e2fef740939d7a',
     messagingSenderId: '1034836315663',
     projectId: 'movietipsusers',
     storageBucket: 'movietipsusers.appspot.com',
-    iosClientId: '1034836315663-tpcaj6fs98keajg8bvh30ug8ul8ieqab.apps.googleusercontent.com',
-    iosBundleId: 'com.example.codigomobile',
+    iosClientId: '1034836315663-e4qpjuoqrvheo4r6apte0fu6rl1pce30.apps.googleusercontent.com',
+    iosBundleId: 'com.example.movietipsflutter',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyACICFCOu3XyRHuwBFvVjFFP-EKhmJO_d4',
-    appId: '1:1034836315663:ios:1f4d1c965e5cfe3d939d7a',
+    appId: '1:1034836315663:ios:e176e1f6e2fef740939d7a',
     messagingSenderId: '1034836315663',
     projectId: 'movietipsusers',
     storageBucket: 'movietipsusers.appspot.com',
-    iosClientId: '1034836315663-tpcaj6fs98keajg8bvh30ug8ul8ieqab.apps.googleusercontent.com',
-    iosBundleId: 'com.example.codigomobile',
+    iosClientId: '1034836315663-e4qpjuoqrvheo4r6apte0fu6rl1pce30.apps.googleusercontent.com',
+    iosBundleId: 'com.example.movietipsflutter',
   );
 }

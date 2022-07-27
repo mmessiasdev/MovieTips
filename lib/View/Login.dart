@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'HomePage.dart';
 import 'Registration.dart';
 
+// ------------ LOGIN PAGE ------------ //
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -13,6 +13,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  // ------- FireBase controller ------- //
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _firebaseAuth = FirebaseAuth.instance;
@@ -26,7 +27,7 @@ class _LoginState extends State<Login> {
           height: double.infinity,
           width: MediaQuery.of(context).size.width * 0.90,
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: Colors.white,
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(50),
               topRight: Radius.circular(0),
@@ -129,6 +130,7 @@ class _LoginState extends State<Login> {
     );
   }
 
+  // ------- Login autentication function ------- //
   Login() async {
     try {
       UserCredential userCredential =

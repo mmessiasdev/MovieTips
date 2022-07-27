@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,11 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
+// ------------ TRALLER ENGLISH COMPONENT ------------ //
 class TraillerEn extends StatelessWidget {
   TraillerEn({required this.idMovie});
 
   String idMovie;
 
+  // ------- Fetch Traller Movie API ID ------- //
   Future<List> fetch() async {
     var url = Uri.parse(
         'https://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=78e7e6ae60efeac373ce12307172c271&language=en&page=1');
@@ -25,11 +26,17 @@ class TraillerEn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
-          child: Text('Em Inglês',
-              textAlign: TextAlign.center,
-              style: GoogleFonts.montserrat(
-                  fontSize: 20, fontWeight: FontWeight.w600)),
+        Padding(
+          padding: const EdgeInsets.only(top: 0, left: 10),
+          child: SizedBox(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text('em Inglês',
+                  textAlign: TextAlign.left,
+                  style: GoogleFonts.montserrat(
+                      fontSize: 18, fontWeight: FontWeight.w600)),
+            ),
+          ),
         ),
         SizedBox(
           height: 270,

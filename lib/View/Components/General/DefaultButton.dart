@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// ------------ DEFAULT BUTTON COMPONENT ------------ //
 class DefaultButton extends StatelessWidget {
   const DefaultButton({required this.tap, required this.icon});
 

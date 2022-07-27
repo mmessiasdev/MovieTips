@@ -8,9 +8,11 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+// ------------ WHERE TO FIND COMPONENT ------------ //
 class ToFind extends StatelessWidget {
   ToFind({required this.idMovie});
 
+  // ------- Fetch where to flatrate ------- //
   Future<List> fetch() async {
     var itemCount;
     var url = Uri.parse(
@@ -26,6 +28,7 @@ class ToFind extends StatelessWidget {
     return itemCount;
   }
 
+  // ------- Fetch where to rent ------- //
   Future<List> fetchRent() async {
     var itemCount;
     var url = Uri.parse(
@@ -41,6 +44,7 @@ class ToFind extends StatelessWidget {
     return itemCount;
   }
 
+  // ------- Principal Fetch where to buy ------- //
   Future<List> fetchBuy() async {
     var itemCount;
     var url = Uri.parse(
@@ -104,8 +108,8 @@ class ToFind extends StatelessWidget {
         children: [
           GestureDetector(
               child: Container(
-                width: MediaQuery.of(context).size.width * 0.90,
-                height: 120,
+                width: MediaQuery.of(context).size.width * 0.85,
+                height: 100,
                 decoration: const BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topLeft,
@@ -129,8 +133,10 @@ class ToFind extends StatelessWidget {
                       width: 18,
                     ),
                     SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.50,
                       child: Text(
                         'Aonde Encontrar',
+                        textAlign: TextAlign.center,
                         style: GoogleFonts.montserrat(
                             fontSize: 30,
                             fontWeight: FontWeight.w700,

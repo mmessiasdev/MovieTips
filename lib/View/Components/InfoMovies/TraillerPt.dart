@@ -8,11 +8,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
+// ------------ TRALLER COMPONENT ------------ //
 class TraillerPt extends StatelessWidget {
   TraillerPt({required this.idMovie});
 
   String idMovie;
 
+  // ------- Fetch Traller Movie API ID ------- //
   Future<List> fetch() async {
     var url = Uri.parse(
         'https://api.themoviedb.org/3/movie/${idMovie}/videos?api_key=78e7e6ae60efeac373ce12307172c271&language=pt-br&page=1');
@@ -31,12 +33,15 @@ class TraillerPt extends StatelessWidget {
             return Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 35, left: 10),
                   child: SizedBox(
-                    child: Text('Trailer',
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.montserrat(
-                            fontSize: 20, fontWeight: FontWeight.w600)),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Trailler',
+                          textAlign: TextAlign.left,
+                          style: GoogleFonts.montserrat(
+                              fontSize: 18, fontWeight: FontWeight.w600)),
+                    ),
                   ),
                 ),
                 ListView.builder(

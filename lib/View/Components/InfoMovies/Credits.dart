@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,11 +8,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
+// ------------ CASTER COMPONENT ------------ //
 class Credits extends StatelessWidget {
   Credits({required this.idMovie});
 
   String idMovie;
 
+  // ------- Fetch Casters Movie API ID ------- //
   Future<List> fetch() async {
     var url = Uri.parse(
         'https://api.themoviedb.org/3/movie/${idMovie}/credits?api_key=78e7e6ae60efeac373ce12307172c271&language=pt-br');
@@ -32,10 +33,13 @@ class Credits extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10),
             child: SizedBox(
-              child: Text('Casters',
-                  textAlign: TextAlign.center,
-                  style: GoogleFonts.montserrat(
-                      fontSize: 20, fontWeight: FontWeight.w600)),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text('Elenco',
+                    textAlign: TextAlign.left,
+                    style: GoogleFonts.montserrat(
+                        fontSize: 18, fontWeight: FontWeight.w600)),
+              ),
             ),
           ),
           SizedBox(
@@ -103,7 +107,7 @@ class Credits extends StatelessWidget {
                       });
                 } else if (snapshot.hasError) {
                   return Center(
-                    child: Text('Casters Não existem'),
+                    child: Text('Casters não Encontrados'),
                   );
                 }
                 return Center(child: CircularProgressIndicator());

@@ -1,13 +1,12 @@
 import 'dart:async';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
 import '../View/HomePage.dart';
 import '../View/Login.dart';
 
+// ------------ RESPONSABLE FOR USER VERIFICATION ------------ //
 class UserChecked extends StatefulWidget {
   const UserChecked({Key? key}) : super(key: key);
 
@@ -18,6 +17,7 @@ class UserChecked extends StatefulWidget {
 class _UserCheckedState extends State<UserChecked> {
   StreamSubscription? streamSubscription;
 
+  // ------------ App launch authentication state ------------ //
   @override
   initState() {
     super.initState();

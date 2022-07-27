@@ -14,6 +14,7 @@ class MovieGalery extends StatelessWidget {
 
   String idMovie;
 
+  // ------- Fetch images Movie API ID ------- //
   Future<List> fetch() async {
     var url = Uri.parse(
         'https://api.themoviedb.org/3/movie/${idMovie}/images?api_key=78e7e6ae60efeac373ce12307172c271&language=en');
@@ -73,7 +74,7 @@ class MovieGalery extends StatelessWidget {
                     });
               } else if (snapshot.hasError) {
                 return Center(
-                  child: Text('Casters Não existem'),
+                  child: Text('Fotos não encontradas'),
                 );
               }
               return Center(child: CircularProgressIndicator());

@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:flutter/services.dart';
 import 'Login.dart';
 
+// ------------ RESPONSIBLE FOR THE APP REGISTRATION SCREEN ------------ //
 class Registration extends StatefulWidget {
   Registration({Key? key}) : super(key: key);
 
@@ -14,16 +15,15 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
+  // ------- FireBase controller ------- //
   final _nameController = TextEditingController();
-
   final _emailController = TextEditingController();
-
   final _passwordController = TextEditingController();
-
   final _firebaseAuth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
+    // ------- Registration autentication function ------- //
     Cadastrar() async {
       try {
         UserCredential userCredential =

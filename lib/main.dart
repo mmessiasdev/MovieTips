@@ -1,8 +1,7 @@
 import 'dart:io';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter/services.dart';
 import 'Controller/UserChecked.dart';
 import 'firebase_options.dart';
 
@@ -14,6 +13,7 @@ void main() async {
   runApp(const MyApp());
 }
 
+// ------------ MAIN PAGE ------------ //
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -21,12 +21,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      title: 'Movietips',
       home: SafeArea(
+        // ------- Screen responsible for checking whether the user is logged in or not in the app ------- //
         child: UserChecked(),
+        // -------------- //
       ),
     );
   }

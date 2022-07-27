@@ -1,97 +1,82 @@
 import 'dart:convert';
-
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:Movietips/View/OnTapScreen.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
-import '../OnTapScreen.dart';
-
-class CarouselMoviel extends StatelessWidget {
-  CarouselMoviel({Key? key, required this.movieId, required this.title})
-      : super(key: key);
-
-  String movieId;
+// ------------ HORIZONTAL LIST WITH TITLE MOVIES COMPONENT ------------ //
+class MovieList extends StatelessWidget {
+  MovieList({required this.title, required this.genero});
   String title;
+  String genero;
 
-  final List<String> imgList = [
-    'https://www.themoviedb.org/t/p/original/56v2KjBlU4XaOv9rVYEQypROD7P.jpg',
-    'https://www.themoviedb.org/t/p/original/n6vVs6z8obNbExdD3QHTr4Utu1Z.jpg',
-    'https://www.themoviedb.org/t/p/original/n3u3kgNttY1F5Ixi5bMY9BwZImQ.jpg'
-  ];
-
+  // ------- Fetch Movie API ID ------- //
   Future<List> fetch() async {
     var url = Uri.parse(
-        'https://api.themoviedb.org/3/movie/${movieId}/recommendations?api_key=78e7e6ae60efeac373ce12307172c271&language=pt-br&page=1');
+        'https://api.themoviedb.org/3/movie/${genero}?api_key=78e7e6ae60efeac373ce12307172c271&language=pt-BR&page=1');
     var response = await http.get(url);
     var jsonResponse = jsonDecode(response.body);
     var itemCount = jsonResponse['results'];
     return itemCount;
   }
 
-  // https://api.themoviedb.org/3/movie/${movie_id}/recommendations?api_key=78e7e6ae60efeac373ce12307172c271&language=pt-br&page=1
-
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 10),
+      padding: const EdgeInsets.only(top: 25),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 8, right: 8, top: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
             child: Align(
-              alignment: Alignment.center,
+              alignment: Alignment.centerLeft,
               child: Text(
                 title,
                 style: GoogleFonts.montserrat(
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700,
-                ),
+                    fontSize: 20, fontWeight: FontWeight.w500),
               ),
             ),
           ),
           SizedBox(
-            height: 250,
-            child: FutureBuilder<List>(
-                future: fetch(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return GridView.builder(
+            height: 220,
+            child: SizedBox(
+              child: FutureBuilder<List>(
+                  future: fetch(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return GridView.builder(
                         scrollDirection: Axis.horizontal,
                         shrinkWrap: true,
                         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                           maxCrossAxisExtent: 400,
                           mainAxisSpacing: 0,
-                          mainAxisExtent:
-                              MediaQuery.of(context).size.width * 0.85,
+                          mainAxisExtent: 150,
                         ),
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
                           var UserApi = snapshot.data![index];
                           var url =
-                              "https://www.themoviedb.org/t/p/w1280_and_h720_bestv2";
-                          if (UserApi['backdrop_path'] != null) {
+                              "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
+
+                          if (UserApi['poster_path'] != null) {
                             return Padding(
-                              padding: const EdgeInsets.only(left: 30),
+                              padding: const EdgeInsets.all(8.0),
                               child: GestureDetector(
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.stretch,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     ClipRRect(
-                                      borderRadius: BorderRadius.circular(25),
-                                      child: SizedBox(
-                                        width: double.infinity,
-                                        height: 200,
-                                        child: Image.network(
-                                          '${url}${UserApi["backdrop_path"]}'
-                                              .toString(),
-                                          fit: BoxFit.cover,
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image(
+                                        height: 180,
+                                        image: CachedNetworkImageProvider(
+                                          '${url}${UserApi["poster_path"]}',
                                         ),
                                       ),
                                     ),
@@ -112,6 +97,7 @@ class CarouselMoviel extends StatelessWidget {
                                   ],
                                 ),
                                 onTap: () {
+                                  print(UserApi["id"]);
                                   var url =
                                       "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
                                   Navigator.push(
@@ -153,16 +139,37 @@ class CarouselMoviel extends StatelessWidget {
                               )
                             ],
                           );
-                        });
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: Text('Erro ao pegar Cotação'),
-                    );
-                  }
-                  return Center(child: CircularProgressIndicator());
-                }),
+                        },
+                      );
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Erro ao procurar filme'),
+                      );
+                    }
+                    return Center(child: CircularProgressIndicator());
+                  }),
+            ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ButtonsCategories extends StatelessWidget {
+  const ButtonsCategories({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(left: 20),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Color.fromARGB(255, 219, 219, 219),
+        ),
+        width: 120,
+        child: Center(child: Text('Action')),
       ),
     );
   }

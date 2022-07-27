@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ------------ BANNER, DESCRIPTION, DATE AND RATING COMPONENT ------------ //
 class MovieBanner extends StatelessWidget {
   MovieBanner(
       {Key? key,

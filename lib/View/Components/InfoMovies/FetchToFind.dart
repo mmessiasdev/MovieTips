@@ -4,6 +4,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ------------ WHERE TO FIND COMPONENT ------------ //
 class FetchToFind extends StatefulWidget {
   FetchToFind({Key? key, required this.fetchSelect, required this.title})
       : super(key: key);
@@ -86,7 +87,7 @@ class _FetchToFindState extends State<FetchToFind> {
                       });
                 } else if (snapshot.hasError) {
                   return Center(
-                    child: Text('Casters Não existem'),
+                    child: Text('Não encontrado.'),
                   );
                 }
                 return Center(child: CircularProgressIndicator());

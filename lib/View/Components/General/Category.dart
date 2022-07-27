@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:Movietips/View/OnTapScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -8,8 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'package:http/http.dart' as http;
 
-import '../OnTapScreen.dart';
-
+// ------------ MOVIE CATEGORY COMPONENT ------------ //
 class Category extends StatefulWidget {
   Category({
     Key? key,
@@ -26,9 +26,11 @@ class Category extends StatefulWidget {
 enum Selected { np, yp }
 
 class _CategoryState extends State<Category> {
+  // ------- Initial Value category button ------- //
   var generes = "10751";
-  var categName = "Catégoria";
+  var categName = "Categoría";
 
+  // ------- Fetch Movie API ID ------- //
   Future<List> fetch() async {
     var url = Uri.parse(
         'https://api.themoviedb.org/3/discover/movie?api_key=78e7e6ae60efeac373ce12307172c271&language=pt-br&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${generes}&with_watch_monetization_types=flatrate');
@@ -38,6 +40,7 @@ class _CategoryState extends State<Category> {
     return itemCount;
   }
 
+  // ------- Fetch State Movie API ------- //
   Future<List> fetchGeneres() async {
     var url = Uri.parse(
         'https://api.themoviedb.org/3/genre/movie/list?api_key=78e7e6ae60efeac373ce12307172c271&language=pt-br');
@@ -47,6 +50,7 @@ class _CategoryState extends State<Category> {
     return itemCount;
   }
 
+  // ------- Preset Colors ------- //
   Color secoundColor = Color.fromARGB(255, 113, 113, 113);
   Color primaryColor = Color.fromARGB(255, 209, 209, 209);
 
@@ -87,12 +91,14 @@ class _CategoryState extends State<Category> {
                           var url =
                               "https://www.themoviedb.org/t/p/w600_and_h900_bestv2";
                           return GestureDetector(
+                            // ------- State click controller genere ------- //
                             onTap: () {
                               setState(() {
                                 generes = "${UserApi["id"]}";
                                 categName = "${UserApi["name"]}";
                               });
                             },
+                            // -------------- //
                             child: Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 10),
